@@ -78,7 +78,7 @@ export class ObjectLoaderComponent implements OnInit {
                     this.scene.add(object);
                     // debugger;
                     this.threeElement.nativeElement.appendChild(this.renderer.domElement);
-                    this.animate();
+                    this.animate(object);
                 },
                 (xhr) => {
                     console.log((xhr.loaded / xhr.total * 100) + "% loaded");
@@ -92,8 +92,12 @@ export class ObjectLoaderComponent implements OnInit {
         }, 300);
     }
 
-    animate() {
-        requestAnimationFrame(() => this.animate());
+    animate(object: any) {
+
+        object.rotation.x += 0.01;
+        object.rotation.y += 0.01;
+
+        requestAnimationFrame(() => this.animate(object));
         this.renderer.render(this.scene, this.camera);
     }
 
