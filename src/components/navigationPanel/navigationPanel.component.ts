@@ -1,11 +1,33 @@
 //#region IMPORTS
-import { INavElement                    } from "../../model/navigationElements/navElement";
-import { Router                         } from "@angular/router";
+import { INavElement } from "../../model/navigationElements/navElement";
+import { Router } from "@angular/router";
 
-import { Component,
-         Input,
-         OnInit,
-         ViewEncapsulation} from "@angular/core";
+import {
+    Component,
+    Input,
+    OnInit
+} from "@angular/core";
+//#endregion
+
+//#region LOGGER
+import {
+    Logger,
+    ELoglevel,
+    ETransportType
+} from "letslog";
+
+const logger = new Logger({
+    baseComment: "app.component.ts",
+    loglvl: ELoglevel.DEBUG,
+    transports: [
+        {
+            showBaseComment: true,
+            showDate: false,
+            showLoglevel: true,
+            type: ETransportType.console
+        }
+    ]
+});
 //#endregion
 
 @Component({
@@ -21,17 +43,13 @@ export class NavigationPanelComponent implements OnInit {
 
     constructor(
         private router: Router
-    ) {
-        console.log("NavigationPanelComponent");
-    }
+    ) { }
 
     ngOnInit() {
-        console.log("elements", this.elements);
+        logger.info("NavigationPanelComponent");
     }
 
-    action(element:INavElement) {
-        console.log("element", element);
-
+    action(element: INavElement) {
         this.router.navigateByUrl(element.path);
     }
 }

@@ -1,10 +1,26 @@
 //#region IMPORTS
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, LineBasicMaterial, Geometry, Vector3, Line } from "three";
+import { BaseScenary } from "../../../model/threeElements/baseScenary";
+
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef
+} from "@angular/core";
+import {
+    LineBasicMaterial,
+    Geometry,
+    Vector3,
+    Line
+} from "three";
 //#endregion
 
 //#region LOGGER
-import { Logger, ELoglevel, ETransportType } from "letslog";
+import {
+    Logger,
+    ELoglevel,
+    ETransportType
+} from "letslog";
 
 const logger = new Logger({
     baseComment: "app.module.ts",
@@ -31,48 +47,32 @@ export class DrawingLineComponent implements OnInit {
 
     @ViewChild("threeElement") threeElement: ElementRef;
 
-    scene: Scene;
-    camera: PerspectiveCamera;
-    renderer: WebGLRenderer;
-    test = 1;
+    private baseSenary: BaseScenary;
 
     ngOnInit() {
         setTimeout(() => {
 
-            const w = this.threeElement.nativeElement.clientHeight;
-            const h = this.threeElement.nativeElement.clientWidth;
+            this.baseSenary = new BaseScenary(this.threeElement.nativeElement);
 
-            logger.debug(`init w: ${w} - h: ${h}`);
-            this.scene = new Scene();
-            this.camera = new PerspectiveCamera(75, h / w, 0.1, 1000);
-            this.renderer = new WebGLRenderer();
-            this.renderer.setSize(h, w);
-
-            this.camera.position.set(0, 0, 100);
-            this.camera.lookAt(0, 0, 0);
-
-
-
-            var material = new LineBasicMaterial( { color: 0x0000ff } );
-
+            var material = new LineBasicMaterial({ color: 0x0000ff });
             var geometry = new Geometry();
-            geometry.vertices.push(new Vector3( -10, 0, 0) );
-            geometry.vertices.push(new Vector3( 0, 10, 0) );
-            geometry.vertices.push(new Vector3( 10, 0, 0) );
 
-            var line = new Line( geometry, material );
+            geometry.vertices.push(new Vector3(-1, 0, 0));
+            geometry.vertices.push(new Vector3(0, 1, 0));
+            geometry.vertices.push(new Vector3(1, 0, 0));
 
-            this.scene.add( line );
+            var line = new Line(geometry, material);
 
-            this.threeElement.nativeElement.appendChild(this.renderer.domElement);
-            this.animate();
+            this.baseSenary.addToScene(line);
+
+            setInterval(() => {
+                line.rotation.x += 0.01;
+                line.rotation.y += 0.01;
+            }, 1000 / 60);
+
+            this.baseSenary.animate();
+
         }, 300);
-    }
-
-    animate() {
-        this.camera.rotateZ(0.005);
-        requestAnimationFrame(() => this.animate());
-        this.renderer.render(this.scene, this.camera);
     }
 
 }

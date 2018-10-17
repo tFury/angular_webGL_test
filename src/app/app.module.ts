@@ -3,21 +3,23 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
-import { DrawingLineComponent } from "./partials/drawingLines/drawingLines.component";
 import { Routes, RouterModule } from "@angular/router";
-import { MainComponent } from "./partials/main/main.component";
 
+import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
+import { MainComponent } from "./partials/main/main.component";
+import { DrawingLineComponent } from "./partials/drawingLines/drawingLines.component";
 import { RotatingCubeComponent } from "./partials/rotationCube/rotatingCube.component";
 import { ObjectLoaderComponent } from "./partials/objectLoad/objectLoader.component";
-
-
+import { TextComponent } from "./partials/text/text.component";
 import { AppComponent } from "./app.component";
 //#endregion
 
 //#region LOGGER
-import { Logger, ELoglevel, ETransportType } from "letslog";
-import { TextComponent } from "./partials/text/text.component";
+import {
+    Logger,
+    ELoglevel,
+    ETransportType
+} from "letslog";
 
 const logger = new Logger({
     baseComment: "app.module.ts",

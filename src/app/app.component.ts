@@ -1,12 +1,19 @@
 //#region IMPORTS
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Scene, Camera, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from "three";
+import { Router } from "@angular/router";
+import { INavElement } from "../model/navigationElements/navElement";
+
+import {
+    Component,
+    OnInit
+} from "@angular/core";
 //#endregion
 
 //#region LOGGER
-import { Logger, ELoglevel, ETransportType } from "letslog";
-import { INavElement } from "../model/navigationElements/navElement";
-import { Router } from "@angular/router";
+import {
+    Logger,
+    ELoglevel,
+    ETransportType
+} from "letslog";
 
 const logger = new Logger({
     baseComment: "app.component.ts",

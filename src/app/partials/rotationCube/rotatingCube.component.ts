@@ -1,11 +1,29 @@
 //#region IMPORTS
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { Router } from "@angular/router";
-import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from "three";
+import { BaseScenary } from "../../../model/threeElements/baseScenary";
+
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef
+} from "@angular/core";
+import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    BoxGeometry,
+    MeshBasicMaterial,
+    Mesh
+} from "three";
 //#endregion
 
 //#region LOGGER
-import { Logger, ELoglevel, ETransportType } from "letslog";
+import {
+    Logger,
+    ELoglevel,
+    ETransportType
+} from "letslog";
+import { interval } from "rxjs";
 
 const logger = new Logger({
     baseComment: "app.module.ts",
@@ -32,9 +50,7 @@ export class RotatingCubeComponent implements OnInit {
 
     @ViewChild("threeElement") threeElement: ElementRef;
 
-    scene: Scene;
-    camera: PerspectiveCamera;
-    renderer: WebGLRenderer;
+    baseScenary: BaseScenary;
 
     geometry: BoxGeometry;
     material: MeshBasicMaterial;
@@ -43,38 +59,20 @@ export class RotatingCubeComponent implements OnInit {
     ngOnInit() {
         setTimeout(() => {
 
-            const w = this.threeElement.nativeElement.clientHeight;
-            const h = this.threeElement.nativeElement.clientWidth;
-
-            logger.debug(`init w: ${w} - h: ${h}`);
-            // debugger;
-            this.scene = new Scene();
-            this.camera = new PerspectiveCamera(75, h / w, 0.1, 1000);
-            this.renderer = new WebGLRenderer();
+            this.baseScenary = new BaseScenary(this.threeElement.nativeElement);
 
             this.geometry = new BoxGeometry(1, 1, 1);
             this.material = new MeshBasicMaterial({ color: 0x00ff00 });
             this.cube = new Mesh(this.geometry, this.material);
 
-            this.renderer.setSize(h, w);
+            this.baseScenary.addToScene(this.cube);
+            this.baseScenary.animate();
 
-            this.scene.add(this.cube);
+            setInterval(() => {
+                this.cube.rotation.x += 0.01;
+                this.cube.rotation.y += 0.01;
+            }, 1000/60);
 
-            this.camera.position.z = 5;
-
-            this.threeElement.nativeElement.appendChild(this.renderer.domElement);
-
-
-            this.animate();
         }, 300);
     }
-
-    animate() {
-        this.cube.rotation.x += 0.01;
-        this.cube.rotation.y += 0.01;
-
-        requestAnimationFrame(() => this.animate());
-        this.renderer.render(this.scene, this.camera);
-    }
-
 }
