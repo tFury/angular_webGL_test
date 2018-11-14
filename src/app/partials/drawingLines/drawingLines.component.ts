@@ -7,12 +7,12 @@ import {
     ViewChild,
     ElementRef
 } from "@angular/core";
-import {
-    LineBasicMaterial,
-    Geometry,
-    Vector3,
-    Line
-} from "three";
+// import {
+//     LineBasicMaterial,
+//     Geometry,
+//     Vector3,
+//     Line
+// } from "three";
 //#endregion
 
 //#region LOGGER
@@ -52,25 +52,25 @@ export class DrawingLineComponent implements OnInit {
     ngOnInit() {
         setTimeout(() => {
 
-            this.baseSenary = new BaseScenary(this.threeElement.nativeElement);
+            // this.baseSenary = new BaseScenary(this.threeElement.nativeElement);
 
-            var material = new LineBasicMaterial({ color: 0x0000ff });
-            var geometry = new Geometry();
+            // var material = new LineBasicMaterial({ color: 0x0000ff });
+            // var geometry = new Geometry();
 
-            geometry.vertices.push(new Vector3(-1, 0, 0));
-            geometry.vertices.push(new Vector3(0, 1, 0));
-            geometry.vertices.push(new Vector3(1, 0, 0));
+            // geometry.vertices.push(new Vector3(-1, 0, 0));
+            // geometry.vertices.push(new Vector3(0, 1, 0));
+            // geometry.vertices.push(new Vector3(1, 0, 0));
 
-            var line = new Line(geometry, material);
+            // var line = new Line(geometry, material);
 
-            this.baseSenary.addToScene(line);
+            // this.baseSenary.addToScene(line);
 
-            setInterval(() => {
-                line.rotation.x += 0.01;
-                line.rotation.y += 0.01;
-            }, 1000 / 60);
+            // setInterval(() => {
+            //     line.rotation.x += 0.01;
+            //     line.rotation.y += 0.01;
+            // }, 1000 / 60);
 
-            this.baseSenary.animate();
+            // this.baseSenary.animate();
 
         }, 300);
     }

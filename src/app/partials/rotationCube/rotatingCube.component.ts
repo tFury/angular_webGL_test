@@ -7,14 +7,14 @@ import {
     ViewChild,
     ElementRef
 } from "@angular/core";
-import {
-    Scene,
-    PerspectiveCamera,
-    WebGLRenderer,
-    BoxGeometry,
-    MeshBasicMaterial,
-    Mesh
-} from "three";
+// import {
+//     Scene,
+//     PerspectiveCamera,
+//     WebGLRenderer,
+//     BoxGeometry,
+//     MeshBasicMaterial,
+//     Mesh
+// } from "three";
 //#endregion
 
 //#region LOGGER
@@ -52,27 +52,27 @@ export class RotatingCubeComponent implements OnInit {
 
     baseScenary: BaseScenary;
 
-    geometry: BoxGeometry;
-    material: MeshBasicMaterial;
-    cube: Mesh;
+    // geometry: BoxGeometry;
+    // material: MeshBasicMaterial;
+    // cube: Mesh;
 
     ngOnInit() {
-        setTimeout(() => {
+        // setTimeout(() => {
 
-            this.baseScenary = new BaseScenary(this.threeElement.nativeElement);
+        //     this.baseScenary = new BaseScenary(this.threeElement.nativeElement);
 
-            this.geometry = new BoxGeometry(1, 1, 1);
-            this.material = new MeshBasicMaterial({ color: 0x00ff00 });
-            this.cube = new Mesh(this.geometry, this.material);
+        //     this.geometry = new BoxGeometry(1, 1, 1);
+        //     this.material = new MeshBasicMaterial({ color: 0x00ff00 });
+        //     this.cube = new Mesh(this.geometry, this.material);
 
-            this.baseScenary.addToScene(this.cube);
-            this.baseScenary.animate();
+        //     this.baseScenary.addToScene(this.cube);
+        //     this.baseScenary.animate();
 
-            setInterval(() => {
-                this.cube.rotation.x += 0.01;
-                this.cube.rotation.y += 0.01;
-            }, 1000/60);
+        //     setInterval(() => {
+        //         this.cube.rotation.x += 0.01;
+        //         this.cube.rotation.y += 0.01;
+        //     }, 1000/60);
 
-        }, 300);
+        // }, 300);
     }
 }

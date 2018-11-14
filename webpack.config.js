@@ -24,10 +24,6 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 loaders: ['raw-loader', 'sass-loader']
-            },
-            {
-                test: /\.obj$/,
-                loader: 'webpack-obj-loader'
             }
         ]
     },
@@ -73,8 +69,11 @@ module.exports = {
         }),
         new CopyWebpackPlugin(
             [
-                { from: 'src/assets', to: 'assets'
-            }
-        ])
+                { 
+                    from: 'src/assets',
+                    to: 'assets'
+                }
+            ]
+        )
     ]
 };

@@ -6,15 +6,15 @@ import {
     ViewChild,
     ElementRef
 } from "@angular/core";
-import {
-    Mesh,
-    TextGeometry,
-    BufferGeometry,
-    MeshPhongMaterial,
-    FontLoader,
-    DirectionalLight,
-    PointLight
-} from "three";
+// import {
+//     Mesh,
+//     TextGeometry,
+//     BufferGeometry,
+//     MeshPhongMaterial,
+//     FontLoader,
+//     DirectionalLight,
+//     PointLight
+// } from "three";
 //#endregion
 
 //#region LOGGER
@@ -54,65 +54,65 @@ export class TextComponent implements OnInit {
     font;
 
     ngOnInit() {
-        setTimeout(() => {
+        // setTimeout(() => {
 
-            this.baseScenary = new BaseScenary(this.threeElement.nativeElement);
+        //     this.baseScenary = new BaseScenary(this.threeElement.nativeElement);
 
-            var dirLight = new DirectionalLight(0xffffff, 0.125);
-            dirLight.position.set(0, 0, 1).normalize();
-            this.baseScenary.addToScene(dirLight);
+        //     var dirLight = new DirectionalLight(0xffffff, 0.125);
+        //     dirLight.position.set(0, 0, 1).normalize();
+        //     this.baseScenary.addToScene(dirLight);
 
-            var pointLight = new PointLight(0xffffff, 1.5);
-            pointLight.position.set(0, 100, 90);
-            this.baseScenary.addToScene(pointLight);
+        //     var pointLight = new PointLight(0xffffff, 1.5);
+        //     pointLight.position.set(0, 100, 90);
+        //     this.baseScenary.addToScene(pointLight);
 
-            let text = null;
+        //     let text = null;
 
-            var loader = new FontLoader();
-            loader.load("assets/optimer_bold.typeface.json", (response) => {
-                this.font = response;
+        //     var loader = new FontLoader();
+        //     loader.load("assets/optimer_bold.typeface.json", (response) => {
+        //         this.font = response;
 
-                text = new TextGeometry("text", {
-                    font: this.font,
-                    size: 70,
-                    height: 20,
-                    curveSegments: 4,
-                    bevelThickness: 2,
-                    bevelSize: 1.5,
-                    bevelEnabled: true
-                });
+        //         text = new TextGeometry("text", {
+        //             font: this.font,
+        //             size: 70,
+        //             height: 20,
+        //             curveSegments: 4,
+        //             bevelThickness: 2,
+        //             bevelSize: 1.5,
+        //             bevelEnabled: true
+        //         });
 
-                text.computeBoundingBox();
-                text.computeVertexNormals();
+        //         text.computeBoundingBox();
+        //         text.computeVertexNormals();
 
-                var centerOffset = -0.5 * (text.boundingBox.max.x - text.boundingBox.min.x);
+        //         var centerOffset = -0.5 * (text.boundingBox.max.x - text.boundingBox.min.x);
 
-                let textGeo = new BufferGeometry().fromGeometry(text);
+        //         let textGeo = new BufferGeometry().fromGeometry(text);
 
-                let materials = [
-                    new MeshPhongMaterial({ color: 0xffffff, flatShading: true }), // front
-                    new MeshPhongMaterial({ color: 0xffffff }) // side
-                ];
+        //         let materials = [
+        //             new MeshPhongMaterial({ color: 0xffffff, flatShading: true }), // front
+        //             new MeshPhongMaterial({ color: 0xffffff }) // side
+        //         ];
 
-                let textMesh1 = new Mesh(textGeo, materials);
-                textMesh1.position.x = centerOffset;
-                textMesh1.position.y = 0;
-                textMesh1.position.z = 0;
-                textMesh1.rotation.x = 0;
-                textMesh1.rotation.y = Math.PI * 2;
+        //         let textMesh1 = new Mesh(textGeo, materials);
+        //         textMesh1.position.x = centerOffset;
+        //         textMesh1.position.y = 0;
+        //         textMesh1.position.z = 0;
+        //         textMesh1.rotation.x = 0;
+        //         textMesh1.rotation.y = Math.PI * 2;
 
-                this.baseScenary.addToScene(textMesh1);
+        //         this.baseScenary.addToScene(textMesh1);
 
-                setInterval(() => {
+        //         setInterval(() => {
 
-                    textMesh1.rotation.x += 0.01;
-                    textMesh1.rotation.y += 0.01;
-                });
+        //             textMesh1.rotation.x += 0.01;
+        //             textMesh1.rotation.y += 0.01;
+        //         });
 
-                this.baseScenary.camera.position.z = 150;
-                this.baseScenary.animate();
-            });
+        //         this.baseScenary.camera.position.z = 150;
+        //         this.baseScenary.animate();
+        //     });
 
-        }, 300);
+        // }, 300);
     }
 }

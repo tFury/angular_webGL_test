@@ -12,6 +12,8 @@ import { RotatingCubeComponent } from "./partials/rotationCube/rotatingCube.comp
 import { ObjectLoaderComponent } from "./partials/objectLoad/objectLoader.component";
 import { TextComponent } from "./partials/text/text.component";
 import { AppComponent } from "./app.component";
+import { CameraAnimationComponent } from "./partials/cameraAnimation/cameraAnimation.component";
+import { HouseAnimationComponent } from "./partials/house/houseAnimation.component";
 //#endregion
 
 //#region LOGGER
@@ -55,6 +57,14 @@ const appRoutes: Routes = [
     {
         path: "object_loader",
         component: ObjectLoaderComponent
+    },
+    {
+        path: "camera_animation",
+        component: CameraAnimationComponent
+    },
+    {
+        path: "house_animation",
+        component: HouseAnimationComponent
     }
 ];
 
@@ -86,6 +96,8 @@ const appRoutes: Routes = [
         AppComponent,
         RotatingCubeComponent,
         DrawingLineComponent,
+        CameraAnimationComponent,
+        HouseAnimationComponent,
         ObjectLoaderComponent,
         TextComponent,
         MainComponent

@@ -75,6 +75,14 @@ export class AppComponent implements OnInit {
             {
                 name: "Object Loader",
                 path: "object_loader"
+            },
+            {
+                name: "Camera Animation",
+                path: "camera_animation"
+            },
+            {
+                name: "House Animation",
+                path: "house_animation"
             }
         ];
     }
