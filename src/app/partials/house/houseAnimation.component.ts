@@ -1,6 +1,6 @@
 //#region IMPORTS
+import { BabylonModel } from "../../../model/babylon/babylonModel";
 import * as babylon from "babylonjs";
-import "babylonjs-loaders";
 import {
     Component,
     OnInit,
@@ -42,58 +42,33 @@ export class HouseAnimationComponent implements OnInit {
 
     @ViewChild("babylonElement") babylonElement: ElementRef;
 
-    private _canvas: HTMLCanvasElement;
-    private _engine: babylon.Engine;
-    private _scene: babylon.Scene;
-    private _camera: babylon.ArcRotateCamera;
-    private _light: babylon.Light;
+    private _babylonModel: BabylonModel;
 
     ngOnInit() {
-        this._canvas = this.babylonElement.nativeElement;
-        this._engine = new babylon.Engine(this._canvas, true);
-        this._engine.enableOfflineSupport = false;
-        this._scene = this.createScene(this._engine);
-        this._camera = this.createCamera(this._scene, this._canvas);
-        this._light = this.createLight(this._scene, this._camera);
 
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "object.babylon",
-            this._scene, (newMeshes) => {
-                newMeshes.forEach((mesh) => {
-                    mesh.rotation = new BABYLON.Vector3(BABYLON.Tools.ToRadians(
-                        45), 0, 0);
-                });
-            });
+        this._babylonModel = new BabylonModel(this.babylonElement);
 
-        this._engine.runRenderLoop(() => {
-            this._scene.render();
+        let loader = new babylon.AssetsManager(this._babylonModel.scene);
+        let task = loader.addMeshTask("test", "", "assets/", "house.obj");
+        babylon.OBJFileLoader.OPTIMIZE_WITH_UV = true;
+
+        task.onSuccess = (object) => {
+
+            for (const iterator of object.loadedMeshes) {
+                iterator.position = new BABYLON.Vector3(0, -17, 0);
+                iterator.checkCollisions = true;
+            }
+            console.log("onSuccess", object);
+        };
+
+        loader.load();
+
+
+        this._babylonModel.engine.runRenderLoop(() => {
+            this._babylonModel.scene.render();
         });
     }
 
-    private createScene(engine: babylon.Engine): babylon.Scene {
-        let scene = new BABYLON.Scene(engine);
-        scene.clearColor = new babylon.Color4(1.0, 1.0, 1.0, 1.0);
-
-        return scene;
-    }
-
-    private createCamera(scene: babylon.Scene, canvas: HTMLCanvasElement): babylon.ArcRotateCamera {
-        let camera = new BABYLON.ArcRotateCamera("arcCam",
-            BABYLON.Tools.ToRadians(0),
-            BABYLON.Tools.ToRadians(0),
-            10.0,
-            new BABYLON.Vector3(5, 20, 15),
-            scene);
-        camera.attachControl(canvas, true);
-        return camera;
-    }
-
-    private createLight(scene: babylon.Scene, camera: babylon.ArcRotateCamera): babylon.Light {
-        let light = new BABYLON.PointLight("PointLight", new BABYLON.Vector3(5, 20, 15), scene);
-        light.parent = camera;
-        light.intensity = 1.5;
-
-        return light;
-    }
 
 
 }
