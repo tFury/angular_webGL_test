@@ -7,13 +7,9 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
 import { MainComponent } from "./partials/main/main.component";
-import { DrawingLineComponent } from "./partials/drawingLines/drawingLines.component";
-import { RotatingCubeComponent } from "./partials/rotationCube/rotatingCube.component";
-import { ObjectLoaderComponent } from "./partials/objectLoad/objectLoader.component";
-import { TextComponent } from "./partials/text/text.component";
+import { LoadObjectComponent } from "./partials/loadObject/loadObject.component";
+import { LoadBabylonComponent } from "./partials/loadBabylon/loadBabylon.component";
 import { AppComponent } from "./app.component";
-import { CameraAnimationComponent } from "./partials/cameraAnimation/cameraAnimation.component";
-import { HouseAnimationComponent } from "./partials/house/houseAnimation.component";
 //#endregion
 
 //#region LOGGER
@@ -43,28 +39,12 @@ const appRoutes: Routes = [
         component: MainComponent
     },
     {
-        path: "rotation_cube",
-        component: RotatingCubeComponent
+        path: "load_object",
+        component: LoadObjectComponent
     },
     {
-        path: "drawing_line",
-        component: DrawingLineComponent
-    },
-    {
-        path: "text",
-        component: TextComponent
-    },
-    {
-        path: "object_loader",
-        component: ObjectLoaderComponent
-    },
-    {
-        path: "camera_animation",
-        component: CameraAnimationComponent
-    },
-    {
-        path: "house_animation",
-        component: HouseAnimationComponent
+        path: "load_babylon",
+        component: LoadBabylonComponent
     }
 ];
 
@@ -94,12 +74,8 @@ const appRoutes: Routes = [
 
     declarations: [
         AppComponent,
-        RotatingCubeComponent,
-        DrawingLineComponent,
-        CameraAnimationComponent,
-        HouseAnimationComponent,
-        ObjectLoaderComponent,
-        TextComponent,
+        LoadObjectComponent,
+        LoadBabylonComponent,
         MainComponent
     ],
 })

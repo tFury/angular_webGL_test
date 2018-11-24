@@ -61,28 +61,12 @@ export class AppComponent implements OnInit {
                 path: "/"
             },
             {
-                name: "Rotating Cube",
-                path: "rotation_cube"
+                name: "load model via object",
+                path: "load_object"
             },
             {
-                name: "Drawing Line",
-                path: "drawing_line"
-            },
-            {
-                name: "Text",
-                path: "text"
-            },
-            {
-                name: "Object Loader",
-                path: "object_loader"
-            },
-            {
-                name: "Camera Animation",
-                path: "camera_animation"
-            },
-            {
-                name: "House Animation",
-                path: "house_animation"
+                name: "load model via babylon",
+                path: "load_babylon"
             }
         ];
     }

@@ -1,6 +1,7 @@
 //#region IMPORTS
 import { BabylonModel } from "../../../model/babylon/babylonModel";
 import * as babylon from "babylonjs";
+
 import {
     Component,
     OnInit,
@@ -15,10 +16,9 @@ import {
     ELoglevel,
     ETransportType
 } from "letslog";
-import { load } from "@angular/core/src/render3";
 
 const logger = new Logger({
-    baseComment: "houseAnimation.component.ts",
+    baseComment: "loadObject.component.ts",
     loglvl: ELoglevel.DEBUG,
     transports: [
         {
@@ -33,12 +33,12 @@ const logger = new Logger({
 
 @Component({
     selector: "main",
-    templateUrl: "./houseAnimation.component.html",
+    templateUrl: "./loadObject.component.html",
     styleUrls: [
-        "./houseAnimation.component.scss"
+        "./loadObject.component.scss"
     ]
 })
-export class HouseAnimationComponent implements OnInit {
+export class LoadObjectComponent implements OnInit {
 
     @ViewChild("babylonElement") babylonElement: ElementRef;
 
@@ -49,13 +49,13 @@ export class HouseAnimationComponent implements OnInit {
         this._babylonModel = new BabylonModel(this.babylonElement);
 
         let loader = new babylon.AssetsManager(this._babylonModel.scene);
-        let task = loader.addMeshTask("test", "", "assets/", "house.obj");
+        let task = loader.addMeshTask("test", "", "assets/", "test.obj");
         babylon.OBJFileLoader.OPTIMIZE_WITH_UV = true;
 
         task.onSuccess = (object) => {
 
             for (const iterator of object.loadedMeshes) {
-                iterator.position = new BABYLON.Vector3(0, -17, 0);
+                iterator.position = new BABYLON.Vector3(0, -10, 0);
                 iterator.checkCollisions = true;
             }
             console.log("onSuccess", object);
