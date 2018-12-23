@@ -32,7 +32,7 @@
         "babylonjs-loaders": "^3.3.0",
         "core-js": "2.5.7",
         "imports-loader": "0.8.0",
-        "letslog": "1.0.4",
+        "letslog": "file:../Frameworks/letslog/dist",
         "rxjs": "6.3.3",
         "zone.js": "0.8.26"
     },
