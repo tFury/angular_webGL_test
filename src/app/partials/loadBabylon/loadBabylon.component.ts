@@ -49,9 +49,7 @@ export class LoadBabylonComponent implements OnInit {
         this._babylonModel = new BabylonModel(this.babylonElement);
 
         let loader = new babylon.AssetsManager(this._babylonModel.scene);
-
-
-        let task = loader.addMeshTask("test", "", "assets/", "test.babylon");
+        let task = loader.addMeshTask("complexeCube", "", "assets/", "complexeCube.babylon");
         babylon.OBJFileLoader.OPTIMIZE_WITH_UV = true;
 
         task.onSuccess = (object) => {

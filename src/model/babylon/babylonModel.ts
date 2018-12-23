@@ -6,7 +6,8 @@ export class BabylonModel {
     private _engine: babylon.Engine;
     private _scene: babylon.Scene;
     private _camera: babylon.Camera;
-    private _light: babylon.Light;
+    private _light1: babylon.Light;
+    private _light2: babylon.Light;
     private _ground: babylon.Mesh;
     private _canvas: HTMLCanvasElement;
 
@@ -25,7 +26,8 @@ export class BabylonModel {
 
         this._scene = this.createScene(this._engine);
         this._camera = this.createFreeCamera(this._scene, this._canvas);
-        this._light = this.createLight(this._scene, this._camera);
+        this._light1 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, 15));
+        this._light2 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, -15));
         this._ground = this.createGround(this._scene);
     }
 
@@ -55,9 +57,9 @@ export class BabylonModel {
 
     private createFreeCamera(scene: babylon.Scene, canvas: HTMLCanvasElement): babylon.UniversalCamera {
         let camera = new BABYLON.UniversalCamera("uniCam",
-            new babylon.Vector3(0, -8, -20),
+            new babylon.Vector3(0, -8, -10),
             scene);
-        camera.setTarget(BABYLON.Vector3.Zero());
+        camera.setTarget(new BABYLON.Vector3(0, -8, 0));
         camera.attachControl(canvas, true);
         camera.speed = 0.1;
         camera.applyGravity = true;
@@ -79,8 +81,8 @@ export class BabylonModel {
         return camera;
     }
 
-    private createLight(scene: babylon.Scene, camera: babylon.Camera): babylon.Light {
-        let light = new BABYLON.PointLight("PointLight", new BABYLON.Vector3(5, 20, 15), scene);
+    private createLight(scene: babylon.Scene, camera: babylon.Camera, position: babylon.Vector3): babylon.Light {
+        let light = new BABYLON.PointLight("PointLight", position, scene);
         light.parent = camera;
         light.intensity = 1.5;
 

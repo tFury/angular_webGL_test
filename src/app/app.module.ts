@@ -7,7 +7,6 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
 import { MainComponent } from "./partials/main/main.component";
-import { LoadObjectComponent } from "./partials/loadObject/loadObject.component";
 import { LoadBabylonComponent } from "./partials/loadBabylon/loadBabylon.component";
 import { AppComponent } from "./app.component";
 //#endregion
@@ -37,10 +36,6 @@ const appRoutes: Routes = [
     {
         path: "",
         component: MainComponent
-    },
-    {
-        path: "load_object",
-        component: LoadObjectComponent
     },
     {
         path: "load_babylon",
@@ -74,7 +69,6 @@ const appRoutes: Routes = [
 
     declarations: [
         AppComponent,
-        LoadObjectComponent,
         LoadBabylonComponent,
         MainComponent
     ],

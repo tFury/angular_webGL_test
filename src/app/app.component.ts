@@ -61,10 +61,6 @@ export class AppComponent implements OnInit {
                 path: "/"
             },
             {
-                name: "load model via object",
-                path: "load_object"
-            },
-            {
                 name: "load model via babylon",
                 path: "load_babylon"
             }
