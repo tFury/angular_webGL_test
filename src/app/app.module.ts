@@ -8,6 +8,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
 import { MainComponent } from "./partials/main/main.component";
 import { LoadBabylonComponent } from "./partials/loadBabylon/loadBabylon.component";
+import { InteractObjectComponent } from "./partials/interactObject/interactObject.component";
+import { SetupSceneComponent } from "./partials/setupScene/setupScene.component";
 import { AppComponent } from "./app.component";
 //#endregion
 
@@ -40,6 +42,14 @@ const appRoutes: Routes = [
     {
         path: "load_babylon",
         component: LoadBabylonComponent
+    },
+    {
+        path: "interact_object",
+        component: InteractObjectComponent
+    },
+    {
+        path: "base_scenery",
+        component: SetupSceneComponent
     }
 ];
 
@@ -70,6 +80,8 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         LoadBabylonComponent,
+        InteractObjectComponent,
+        SetupSceneComponent,
         MainComponent
     ],
 })

@@ -61,8 +61,16 @@ export class AppComponent implements OnInit {
                 path: "/"
             },
             {
+                name: "Setup base scenery",
+                path: "base_scenery"
+            },
+            {
                 name: "load model via babylon",
                 path: "load_babylon"
+            },
+            {
+                name: "interact with object",
+                path: "interact_object"
             }
         ];
     }
