@@ -8,7 +8,7 @@ export class BabylonModel {
     private _camera: babylon.Camera;
     private _light1: babylon.Light;
     private _light2: babylon.Light;
-    private _ground: babylon.Mesh;
+    public ground: babylon.Mesh;
     private _canvas: HTMLCanvasElement;
 
     public get scene(): babylon.Scene {
@@ -28,7 +28,7 @@ export class BabylonModel {
         this._camera = this.createFreeCamera(this._scene, this._canvas);
         this._light1 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, 15));
         this._light2 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, -15));
-        this._ground = this.createGround(this._scene);
+        this.ground = this.createGround(this._scene);
     }
 
     private createScene(engine: babylon.Engine): babylon.Scene {
@@ -47,7 +47,7 @@ export class BabylonModel {
         material.backFaceCulling = false;
 
         ground.material = material;
-        ground.position = new BABYLON.Vector3(5, -10, -15);
+        ground.position = new BABYLON.Vector3(0, 0, 0);
         ground.rotation = new BABYLON.Vector3(Math.PI / 2, 0, 0);
 
         ground.checkCollisions = true;
@@ -57,9 +57,9 @@ export class BabylonModel {
 
     private createFreeCamera(scene: babylon.Scene, canvas: HTMLCanvasElement): babylon.UniversalCamera {
         let camera = new BABYLON.UniversalCamera("uniCam",
-            new babylon.Vector3(0, -8, -10),
+            new babylon.Vector3(-10, 1.6, -10),
             scene);
-        camera.setTarget(new BABYLON.Vector3(0, -8, 0));
+        camera.setTarget(new BABYLON.Vector3(0, 0, 0));
         camera.attachControl(canvas, true);
         camera.speed = 0.1;
         camera.applyGravity = true;

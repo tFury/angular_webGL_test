@@ -2,11 +2,11 @@
 
     <mat-sidenav-container class="example-container">
 
-        <mat-sidenav mode="side" opened>
+        <mat-sidenav class="navbar" mode="side" opened>
             <navigation-panel [elements]="navElements"></navigation-panel>
         </mat-sidenav>
 
-        <mat-sidenav-content>
+        <mat-sidenav-content class="content">
             <router-outlet></router-outlet>
         </mat-sidenav-content>
 
