@@ -61,20 +61,16 @@ export class AppComponent implements OnInit {
                 path: "/"
             },
             {
-                name: "Rotating Cube",
-                path: "rotation_cube"
+                name: "Setup base scenery",
+                path: "base_scenery"
             },
             {
-                name: "Drawing Line",
-                path: "drawing_line"
+                name: "load model via babylon",
+                path: "load_babylon"
             },
             {
-                name: "Text",
-                path: "text"
-            },
-            {
-                name: "Object Loader",
-                path: "object_loader"
+                name: "interact with object",
+                path: "interact_object"
             }
         ];
     }

@@ -9,27 +9,6 @@ import {
 } from "@angular/core";
 //#endregion
 
-//#region LOGGER
-import {
-    Logger,
-    ELoglevel,
-    ETransportType
-} from "letslog";
-
-const logger = new Logger({
-    baseComment: "app.component.ts",
-    loglvl: ELoglevel.DEBUG,
-    transports: [
-        {
-            showBaseComment: true,
-            showDate: false,
-            showLoglevel: true,
-            type: ETransportType.console
-        }
-    ]
-});
-//#endregion
-
 @Component({
     selector: "navigation-panel",
     templateUrl: "./navigationPanel.component.html",
@@ -46,7 +25,7 @@ export class NavigationPanelComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        logger.info("NavigationPanelComponent");
+        console.log("NavigationPanelComponent");
     }
 
     action(element: INavElement) {

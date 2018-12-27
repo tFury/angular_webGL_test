@@ -7,10 +7,9 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { NavigationModule } from "../components/navigationPanel/navigationPanel.module";
 import { MainComponent } from "./partials/main/main.component";
-import { DrawingLineComponent } from "./partials/drawingLines/drawingLines.component";
-import { RotatingCubeComponent } from "./partials/rotationCube/rotatingCube.component";
-import { ObjectLoaderComponent } from "./partials/objectLoad/objectLoader.component";
-import { TextComponent } from "./partials/text/text.component";
+import { LoadBabylonComponent } from "./partials/loadBabylon/loadBabylon.component";
+import { InteractObjectComponent } from "./partials/interactObject/interactObject.component";
+import { SetupSceneComponent } from "./partials/setupScene/setupScene.component";
 import { AppComponent } from "./app.component";
 //#endregion
 
@@ -41,20 +40,16 @@ const appRoutes: Routes = [
         component: MainComponent
     },
     {
-        path: "rotation_cube",
-        component: RotatingCubeComponent
+        path: "load_babylon",
+        component: LoadBabylonComponent
     },
     {
-        path: "drawing_line",
-        component: DrawingLineComponent
+        path: "interact_object",
+        component: InteractObjectComponent
     },
     {
-        path: "text",
-        component: TextComponent
-    },
-    {
-        path: "object_loader",
-        component: ObjectLoaderComponent
+        path: "base_scenery",
+        component: SetupSceneComponent
     }
 ];
 
@@ -84,10 +79,9 @@ const appRoutes: Routes = [
 
     declarations: [
         AppComponent,
-        RotatingCubeComponent,
-        DrawingLineComponent,
-        ObjectLoaderComponent,
-        TextComponent,
+        LoadBabylonComponent,
+        InteractObjectComponent,
+        SetupSceneComponent,
         MainComponent
     ],
 })

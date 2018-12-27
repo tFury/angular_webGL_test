@@ -10,7 +10,9 @@
         "experimentalDecorators": true,
         "target": "es5",
         "types": [
-            "node"
+            "node",
+            "babylonjs",
+            "babylonjs-loaders"
         ],
         "typeRoots": [
             "node_modules/@types"
