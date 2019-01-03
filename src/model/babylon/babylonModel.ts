@@ -25,6 +25,12 @@ export class BabylonModel {
         this._engine.enableOfflineSupport = false;
 
         this._scene = this.createScene(this._engine);
+
+
+        var gravityVector = new BABYLON.Vector3(0, -9.81, 0);
+        var physicsPlugin = new BABYLON.CannonJSPlugin();
+        this.scene.enablePhysics(gravityVector, physicsPlugin);
+
         this._camera = this.createFreeCamera(this._scene, this._canvas);
         this._light1 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, 15));
         this._light2 = this.createLight(this._scene, this._camera, new BABYLON.Vector3(5, 20, -15));
@@ -41,16 +47,23 @@ export class BabylonModel {
     }
 
     private createGround(scene: babylon.Scene): babylon.Mesh {
-        var ground = BABYLON.Mesh.CreatePlane("ground", 100.0, scene);
+        var ground = BABYLON.Mesh.CreateGround("ground1", 20, 20, 2, scene);
+
+        ground.physicsImpostor = new BABYLON.PhysicsImpostor(
+            ground,
+            BABYLON.PhysicsImpostor.BoxImpostor,
+            { mass: 0, friction: 0.5, restitution: 0.7 },
+            scene
+        );
+
         var material = new BABYLON.StandardMaterial("groundMat", scene);
         material.diffuseColor = this.calcColor3("#763622");
         material.backFaceCulling = false;
 
         ground.material = material;
-        ground.position = new BABYLON.Vector3(0, 0, 0);
-        ground.rotation = new BABYLON.Vector3(Math.PI / 2, 0, 0);
+        // ground.position = new BABYLON.Vector3(0, 0, 0);
 
-        ground.checkCollisions = true;
+        // ground.checkCollisions = true;
 
         return ground;
     }

@@ -9,6 +9,7 @@ import { NavigationModule } from "../components/navigationPanel/navigationPanel.
 import { MainComponent } from "./partials/main/main.component";
 import { LoadBabylonComponent } from "./partials/loadBabylon/loadBabylon.component";
 import { InteractObjectComponent } from "./partials/interactObject/interactObject.component";
+import { SimpleTowerGameComponent } from "./partials/simpleTowerGame/simpleTowerGame.component";
 import { SetupSceneComponent } from "./partials/setupScene/setupScene.component";
 import { AppComponent } from "./app.component";
 //#endregion
@@ -50,6 +51,10 @@ const appRoutes: Routes = [
     {
         path: "base_scenery",
         component: SetupSceneComponent
+    },
+    {
+        path: "Simple_tower_game",
+        component: SimpleTowerGameComponent
     }
 ];
 
@@ -81,6 +86,7 @@ const appRoutes: Routes = [
         AppComponent,
         LoadBabylonComponent,
         InteractObjectComponent,
+        SimpleTowerGameComponent,
         SetupSceneComponent,
         MainComponent
     ],

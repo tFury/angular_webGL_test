@@ -1,15 +1,13 @@
 <div class="basic-container">
 
-    <mat-sidenav-container class="example-container">
 
-        <mat-sidenav class="navbar" mode="side" opened>
-            <navigation-panel [elements]="navElements"></navigation-panel>
-        </mat-sidenav>
+    <div class="navigationSection">
+        <navigation-panel class="navigationSection" [elements]="navElements"></navigation-panel>
+    </div>
 
-        <mat-sidenav-content class="content">
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
+    <div class="contentSection">
+        <router-outlet></router-outlet>
+    </div>
 
-    </mat-sidenav-container>
 
 </div>

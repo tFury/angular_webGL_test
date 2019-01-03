@@ -49,10 +49,6 @@ export class InteractObjectComponent implements OnInit {
     ngOnInit() {
 
         this._babylonModel = new BabylonModel(this.babylonElement);
-        var redMat = new BABYLON.StandardMaterial("ground", this._babylonModel.scene);
-        redMat.diffuseColor = new BABYLON.Color3(0.4, 0.4, 0.4);
-        redMat.specularColor = new BABYLON.Color3(0.4, 0.4, 0.4);
-        redMat.emissiveColor = BABYLON.Color3.Red();
 
         this._babylonModel.engine.runRenderLoop(() => {
             this._babylonModel.scene.render();

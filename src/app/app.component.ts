@@ -71,6 +71,10 @@ export class AppComponent implements OnInit {
             {
                 name: "interact with object",
                 path: "interact_object"
+            },
+            {
+                name: "Simple Tower Game",
+                path: "Simple_tower_game"
             }
         ];
     }

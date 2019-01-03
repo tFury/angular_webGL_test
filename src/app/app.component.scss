@@ -3,7 +3,20 @@ body {
     margin: 0;
 }
 
-.example-container {
+.basic-container {
     display: flex;
-}
 
+
+    .navigationSection {
+        background-color: aqua;
+        width: 18em;
+        height: 100%;
+    }
+
+    .contentSection {
+        background-color: red;
+        height: 100%;
+        width: 100%;
+    }
+
+}
